@@ -645,7 +645,7 @@
                     @foreach($posts as $post)
                     <div class="content-block post-list-view axil-control is-active mt--30">
                         <div class="post-thumbnail">
-                            <a href="post-details.html">
+                            <a href="{{route('single_post', $post->id)}}">
                                 <img src="{{$post->img295_250}}" alt="Post Images">
                             </a>
                         </div>
@@ -659,14 +659,14 @@
                                     </a>
                                 </div>
                             </div>
-                            <h4 class="title"><a href="post-details.html">{{$post->title}}</a></h4>
+                            <h4 class="title"><a href="{{route('single_post', $post->id)}}">{{$post->title}}</a></h4>
                             <div class="post-meta-wrapper">
                                 <div class="post-meta">
                                     <div class="content">
                                         <h6 class="post-author-name">
-                                            <a class="hover-flip-item-wrapper" href="author.html">
+                                            <a class="hover-flip-item-wrapper" href="{{route('post_by_author', $post->author->key)}}">
                                                     <span class="hover-flip-item">
-                                                        <span data-text="Jane Ara">Jane Ara</span>
+                                                        <span data-text="{{$post->author->name}}">{{$post->author->name}}</span>
                                                     </span>
                                             </a>
                                         </h6>
@@ -677,10 +677,10 @@
                                     </div>
                                 </div>
                                 <ul class="social-share-transparent justify-content-end">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-link"></i></a></li>
+                                    <li><a href="{{$post->author->fb_link}}"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{$post->author->instagram_link}}"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="{{$post->author->twitter_link}}"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="{{$post->author->email_link}}"><i class="far fa-envelope"></i></a></li>
                                 </ul>
                             </div>
                         </div>

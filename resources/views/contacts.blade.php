@@ -29,7 +29,9 @@
                         <h2>Say Hello! </h2>
                         <p>Donec cursus dolor vitae congue consectetur. Morbi mattis viverra felis. Etiam dapibus id turpis at sagittis. Cras mollis mi vel ante ultricies, id ullamcorper mi pulvinar. Proin bibendum ornare risus, lacinia cursus quam condimentum id. Curabitur auctor massa eget porttitor molestie. Aliquam imperdiet dolor nec metus pulvinar sollicitudin. </p>
                         <p><strong>Aliquam iaculis at odio ut tempus</strong>. Suspendisse blandit luctus dui, a consequat mauris mollis id. Sed in ante at tortor malesuada imperdiet. Vestibulum sed gravida nibh. Nulla suscipit congue lorem, id tempor ipsum molestie sit amet. Nulla ultricies vitae erat in tincidunt. Maecenas tempus quam et ipsum elementum, a efficitur lectus tincidunt. Praesent diam elit, tincidunt ac tempus vulputate, aliquet viverra mauris. Etiam eu nunc efficitur, sagittis est ut, fringilla neque. Ut interdum eget lorem eget congue. Ut nec arcu placerat, mattis urna vel, consequat diam. Sed in leo in dolor suscipit molestie. </p>
-                        <p class="primary-color">Email: <a href="#">mepress@gmail.com</a></p>
+                        @foreach($contacts as $contact)
+                        <p class="primary-color">{{$contact->type}}: {{$contact->contact}}</p>
+                        @endforeach
                     </div>
                     <!-- Start Contact Form  -->
                     <div class="axil-section-gapTop axil-contact-form-area">
@@ -73,10 +75,3 @@
             </div>
 @endsection
 
-{{--@section('content_2')--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-{{--<!-- End Post List Wrapper  -->--}}
-{{--@endsection--}}
