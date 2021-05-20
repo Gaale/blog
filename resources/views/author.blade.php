@@ -12,13 +12,13 @@
                     <div class="about-author">
                         <div class="media">
                             <div class="thumbnail">
-                                <a href="{{route('post_by_author', $post->author->key)}}">
+                                <a href="{{route('post_by_author', $author->key)}}">
                                     <img src="{{$author->icon}}" alt="Author Images">
                                 </a>
                             </div>
                             <div class="media-body">
                                 <div class="author-info">
-                                    <h1 class="title"><a href="{{route('post_by_author', $post->author->key)}}">{{$author->name}}</a></h1>
+                                    <h1 class="title"><a href="{{route('post_by_author', $author->key)}}">{{$author->name}}</a></h1>
                                     <span class="b3 subtitle">{{$author->position}}</span>
                                 </div>
                                 <div class="content">
@@ -58,7 +58,7 @@
                         <div class="content-block post-list-view mt--30">
                             <div class="post-thumbnail">
                                 <a href="{{route('single_post', $post->id)}}">
-                                    <img src="{{$post->img295_250}}" alt="Post Images" href="{{route('single_post', $post->id)}}">
+                                    <img src="{{$post->img295_250}}" alt="Post Images">
                                 </a>
                             </div>
                             <div class="post-content">
