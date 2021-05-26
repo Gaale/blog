@@ -28,26 +28,6 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <!-- Start Tab Button  -->
-                        <ul class="axil-tab-button nav nav-tabs mt--20" id="axilTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="tab-one" data-toggle="tab" href="#tabone" role="tab"
-                                   aria-controls="tab-one" aria-selected="true">Accessibility</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="tab-two" data-toggle="tab" href="#tabtwo" role="tab"
-                                   aria-controls="tab-two" aria-selected="false">Android Dev </a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="tab-three" data-toggle="tab" href="#tabthree" role="tab"
-                                   aria-controls="tab-three" aria-selected="false">Blockchain</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="tab-four" data-toggle="tab" href="#tabfour" role="tab"
-                                   aria-controls="tab-four" aria-selected="false">Gadgets</a>
-                            </li>
-                        </ul>
-                        <!-- End Tab Button  -->
 
                         <!-- Start Tab Content Wrapper  -->
                         <div class="tab-content" id="axilTabContent">
@@ -526,108 +506,29 @@
                     <div class="list-categories d-flex flex-wrap">
 
                         <!-- Start Single Category  -->
+                        @foreach($categories->take(6) as $cat)
                         <div class="single-cat">
                             <div class="inner">
-                                <a href="#">
+                                <a href="{{route('post_by_category', $cat->key)}}">
                                     <div class="thumbnail">
-                                        <img src="/assets/images/post-images/post-sm-01.jpg"
+                                        <img src="{{$cat->image}}"
                                              alt="post categories images">
                                     </div>
                                     <div class="content">
-                                        <h5 class="title">Sports &#38; Fitness </h5>
+                                        <h5 class="title">{{$cat->title}}</h5>
                                     </div>
                                 </a>
                             </div>
                         </div>
+                        @endforeach
                         <!-- End Single Category  -->
-
-                        <!-- Start Single Category  -->
-                        <div class="single-cat">
-                            <div class="inner">
-                                <a href="#">
-                                    <div class="thumbnail">
-                                        <img src="/assets/images/post-images/post-sm-02.jpg"
-                                             alt="post categories images">
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">Travel</h5>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- End Single Category  -->
-
-                        <!-- Start Single Category  -->
-                        <div class="single-cat">
-                            <div class="inner">
-                                <a href="#">
-                                    <div class="thumbnail">
-                                        <img src="/assets/images/post-images/post-sm-03.jpg"
-                                             alt="post categories images">
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">lifestyle</h5>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- End Single Category  -->
-
-                        <!-- Start Single Category  -->
-                        <div class="single-cat">
-                            <div class="inner">
-                                <a href="#">
-                                    <div class="thumbnail">
-                                        <img src="/assets/images/post-images/post-sm-04.jpg"
-                                             alt="post categories images">
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">Health</h5>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- End Single Category  -->
-
-                        <!-- Start Single Category  -->
-                        <div class="single-cat">
-                            <div class="inner">
-                                <a href="#">
-                                    <div class="thumbnail">
-                                        <img src="/assets/images/post-images/post-sm-05.jpg"
-                                             alt="post categories images">
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">Animals</h5>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- End Single Category  -->
-
-                        <!-- Start Single Category  -->
-                        <div class="single-cat">
-                            <div class="inner">
-                                <a href="#">
-                                    <div class="thumbnail">
-                                        <img src="/assets/images/post-images/post-sm-06.jpg"
-                                             alt="post categories images">
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="title">Food &#38; Drink</h5>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- End Single Category  -->
-
                     </div>
-                    <!-- Start List Wrapper  -->
+                    <!-- End List Wrapper  -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- Start Categories List  -->
+    <!-- End Categories List  -->
 
     <!-- Start Post List Wrapper  -->
     <div class="axil-post-list-area post-listview-visible-color axil-section-gap bg-color-white">
@@ -650,13 +551,15 @@
                             </a>
                         </div>
                         <div class="post-content">
-                            <div class="post-cat">
-                                <div class="post-cat-list">
-                                    <a class="hover-flip-item-wrapper" href="#">
+                            <div class="post-cat" style="width: 100%">
+                                <div class="post-cat-list" >
+                                    @foreach($post->category as $cat)
+                                    <a class="hover-flip-item-wrapper" href="{{route('post_by_category', $cat->key)}}">
                                             <span class="hover-flip-item">
-                                                <span data-text="FOOD">FOOD</span>
+                                                <span data-text="{{$cat->title}}">{{$cat->title}}</span>
                                             </span>
                                     </a>
+                                    @endforeach
                                 </div>
                             </div>
                             <h4 class="title"><a href="{{route('single_post', $post->id)}}">{{$post->title}}</a></h4>
@@ -671,7 +574,7 @@
                                             </a>
                                         </h6>
                                         <ul class="post-meta-list">
-                                            <li>{{$post->updated_at}}</li>
+                                            <li>{{date('F j, Y', strtotime($post->updated_at))}}</li>
                                             <li>3 min read</li>
                                         </ul>
                                     </div>

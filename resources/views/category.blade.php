@@ -1,46 +1,53 @@
 @extends('layout')
 
-@section('title', $author->name)
+@section('title', $category->title)
 
 @section('content_1')
 
-    <!-- Start Author Area  -->
-    <div class="axil-author-area axil-author-banner bg-color-grey">
+<!-- Start Categories List  -->
+    <div class="axil-categories-list axil-section-gap bg-color-grey">
         <div class="container">
+            <div class="row align-items-center mb--30">
+                <div class="col-lg-6 col-md-8 col-sm-8 col-12">
+                    <div class="section-title">
+                        <h2 class="title">Trending Topics</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-4 col-12">
+                    <div class="see-all-topics text-left text-sm-right mt_mobile--20">
+                        <a class="axil-link-button" href="#">See All Topics</a>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="about-author">
-                        <div class="media">
-                            <div class="thumbnail">
-                                <a href="{{route('post_by_author', $author->key)}}">
-                                    <img src="{{$author->icon}}" alt="Author Images">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <div class="author-info">
-                                    <h1 class="title"><a href="{{route('post_by_author', $author->key)}}">{{$author->name}}</a></h1>
-                                    <span class="b3 subtitle">{{$author->position}}</span>
-                                </div>
-                                <div class="content">
-                                    <p class="b1 description">{{$author->body}}</p>
-                                    <ul class="social-share-transparent size-md">
-                                        <li><a href="{{$author->fb_link}}"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="{{$author->instagram_link}}"><i class="fab fa-instagram"></i></a>
-                                        </li>
-                                        <li><a href="{{$author->twitter_link}}"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="{{$author->email_link}}"><i class="far fa-envelope"></i></a></li>
-                                        <li><a href="{{$author->linkedin_link}}"><i class="fab fa-linkedin-in"></i></a>
-                                        </li>
-                                    </ul>
+                    <!-- Start List Wrapper  -->
+                    <div class="list-categories d-flex flex-wrap">
+
+                        <!-- Start Single Category  -->
+                        @foreach($categories->take(6) as $categ)
+                            <div class="single-cat">
+                                <div class="inner">
+                                    <a href="{{route('post_by_category', $categ->key)}}">
+                                        <div class="thumbnail">
+                                            <img src="{{$categ->image}}"
+                                                 alt="post categories images">
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="title">{{$categ->title}}</h5>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                        </div>
+                    @endforeach
+                    <!-- End Single Category  -->
                     </div>
+                    <!-- Start List Wrapper  -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Author Area  -->
+    <!-- Start Categories List  -->
 
 
     <!-- Start Post List Wrapper  -->
@@ -49,12 +56,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-title">
-                        <h2 class="title mb--40">Articles By This Author</h2>
+                        <h2 class="title mb--40">Articles By "{{$category->title}}" Category</h2>
                     </div>
                 </div>
                 <div class="col-lg-8 col-xl-8">
                     <!-- Start Post List  -->
-                    @foreach($author->posts as $post)
+                    @foreach($category->post as $post)
                         <div class="content-block post-list-view mt--30">
                             <div class="post-thumbnail">
                                 <a href="{{route('single_post', $post->id)}}">
@@ -77,6 +84,13 @@
                                 <div class="post-meta-wrapper">
                                     <div class="post-meta">
                                         <div class="content">
+                                            <h6 class="post-author-name">
+                                                <a class="hover-flip-item-wrapper" href="{{route('post_by_author', $post->author->key)}}">
+                                                    <span class="hover-flip-item">
+                                                        <span data-text="{{$post->author->name}}">{{$post->author->name}}</span>
+                                                    </span>
+                                                </a>
+                                            </h6>
                                             <ul class="post-meta-list">
                                                 <li>{{date('F j, Y', strtotime($post->updated_at))}}</li>
                                                 <li>3 min read</li>
@@ -93,7 +107,8 @@
                             </div>
                         </div>
                 @endforeach
-                        <!-- End Post List  -->
+                <!-- End Post List  -->
                 </div>
 
 @endsection
+

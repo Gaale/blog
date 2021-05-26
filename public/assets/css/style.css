@@ -7978,9 +7978,12 @@ button.video-popup:hover {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  -webkit-transition: background-color .3s, opacity .5s, visibility .5s;
-  -o-transition: background-color .3s, opacity .5s, visibility .5s;
-  transition: background-color .3s, opacity .5s, visibility .5s;
+  -webkit-transition: background-color .3s,
+ opacity .5s, visibility .5s;
+  -o-transition: background-color .3s,
+ opacity .5s, visibility .5s;
+  transition: background-color .3s,
+ opacity .5s, visibility .5s;
   opacity: 0;
   visibility: hidden;
   z-index: 1000;
@@ -10613,7 +10616,7 @@ Post Category
 }
 
 .post-content .post-cat .post-cat-list a::after {
-  content: ",";
+  content: " ";
   position: absolute;
   right: 0;
 }

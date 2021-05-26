@@ -10,4 +10,9 @@ class Post extends Model
     {
         return $this->belongsTo(Author::class);
     }
+
+    public function category()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

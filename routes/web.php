@@ -25,4 +25,6 @@ Route::get('/author/{key}', PostByAuthorController::class)->name('post_by_author
 
 Route::get('/post/{id}', SinglePostController::class)->name('single_post');
 
+Route::get('/category/{key}', PostByCategoryController::class)->name('post_by_category');
+
 

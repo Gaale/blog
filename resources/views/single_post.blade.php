@@ -19,13 +19,15 @@
                                     <div class="content-block">
                                         <!-- Start Post Content  -->
                                         <div class="post-content">
-                                            <div class="post-cat">
-                                                <div class="post-cat-list">
-                                                    <a class="hover-flip-item-wrapper" href="#">
-                                                            <span class="hover-flip-item">
-                                                                <span data-text="FEATURED POST">FEATURED POST</span>
-                                                            </span>
-                                                    </a>
+                                            <div class="post-cat" style="width: 100%">
+                                                <div class="post-cat-list" >
+                                                    @foreach($post->category as $cat)
+                                                        <a class="hover-flip-item-wrapper" href="{{route('post_by_category', $cat->key)}}">
+                                            <span class="hover-flip-item">
+                                                <span data-text="{{$cat->title}}">{{$cat->title}}</span>
+                                            </span>
+                                                        </a>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                             <h1 class="title">{{$post->title}}</h1>
@@ -45,7 +47,7 @@
                                                             </a>
                                                         </h6>
                                                         <ul class="post-meta-list">
-                                                            <li>{{$post->updated_at}}</li>
+                                                            <li>{{date('F j, Y', strtotime($post->updated_at))}}</li>
                                                             <li>300k Views</li>
                                                         </ul>
                                                     </div>

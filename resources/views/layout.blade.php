@@ -115,46 +115,19 @@
             <!-- Start Single Widget  -->
             <div class="axil-single-widget widget widget_categories mb--30">
                 <ul>
+                    @inject('categories', "\App\Category")
+                    @foreach($categories->show_categories() as $category)
                     <li class="cat-item">
-                        <a href="#" class="inner">
+                        <a href="{{route('post_by_category', $category->key)}}" class="inner">
                             <div class="thumbnail">
-                                <img src="/assets/images/post-images/category-image-01.jpg" alt="">
+                                <img src="{{$category->icon}}" alt="">
                             </div>
                             <div class="content">
-                                <h5 class="title">Tech</h5>
+                                <h5 class="title">{{$category->title}}</h5>
                             </div>
                         </a>
                     </li>
-                    <li class="cat-item">
-                        <a href="#" class="inner">
-                            <div class="thumbnail">
-                                <img src="/assets/images/post-images/category-image-02.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">Style</h5>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="cat-item">
-                        <a href="#" class="inner">
-                            <div class="thumbnail">
-                                <img src="/assets/images/post-images/category-image-03.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">Travel</h5>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="cat-item">
-                        <a href="#" class="inner">
-                            <div class="thumbnail">
-                                <img src="/assets/images/post-images/category-image-04.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">Food</h5>
-                            </div>
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
             <!-- End Single Widget  -->
@@ -247,15 +220,14 @@
             <!-- End Single Widget  -->
 
             <!-- Start Single Widget  -->
+            @inject('socials', "\App\SocialNetwork")
             <div class="axil-single-widget widget widget_social mb--30">
                 <h5 class="widget-title">Stay In Touch</h5>
                 <!-- Start Post List  -->
                 <ul class="social-icon md-size justify-content-center">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-slack"></i></a></li>
-                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    @foreach($socials->show_social_networks() as $social)
+                    <li><a href="{{$social->contact}}"><i class="{{$social->icon}}"></i></a></li>
+                    @endforeach
                 </ul>
                 <!-- End Post List  -->
             </div>
@@ -453,7 +425,7 @@
 
                 <div class="col-lg-4 col-md-4">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{route('main')}}">
                             <img class="dark-logo" src="/assets/images/logo/logo-black.png" alt="Logo Images">
                         </a>
                     </div>
@@ -465,10 +437,9 @@
                         class="d-flex justify-content-start mt_sm--15 justify-content-md-end align-items-center flex-wrap">
                         <h5 class="follow-title mb--0 mr--20">Follow Us</h5>
                         <ul class="social-icon color-tertiary md-size justify-content-start">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            @foreach($socials->show_social_networks() as $social)
+                                <li><a href="{{$social->contact}}"><i class="{{$social->icon}}"></i></a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <!-- End Post List  -->
