@@ -48,7 +48,7 @@
                                                         </h6>
                                                         <ul class="post-meta-list">
                                                             <li>{{date('F j, Y', strtotime($post->updated_at))}}</li>
-                                                            <li>300k Views</li>
+                                                            <li>{{$post->views}} Views</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -73,12 +73,9 @@
                         <p class="has-medium-font-size">{{$post->body}}</p>
 
                         <div class="tagcloud">
-                            <a href="#">Design</a>
-                            <a href="#">Life Style</a>
-                            <a href="#">Web Design</a>
-                            <a href="#">Development</a>
-                            <a href="#">Design</a>
-                            <a href="#">Life Style</a>
+                            @foreach($post->category as $cat)
+                            <a href="{{route('post_by_category', $cat->key)}}">{{$cat->title}}</a>
+                            @endforeach
                         </div>
 
                         <div class="social-share-block">

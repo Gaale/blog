@@ -15,4 +15,13 @@ class Post extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function show_popular_posts()
+    {
+        $posts = Post::orderBy('views', 'DESC')
+            ->limit(3)
+            ->get();
+
+        return $posts;
+    }
 }

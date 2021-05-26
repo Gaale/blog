@@ -11,6 +11,8 @@ $factory->define(Post::class, function (Faker $faker) {
         'title' => $faker->text(100),
         'body' => $faker->realTextBetween(2500, 4000),
         'img295_250' => $faker->imageUrl(295, 250),
-        'img780_520' => $faker->imageUrl(780, 520)
+        'img780_520' => $faker->imageUrl(780, 520),
+        'img100_100' => $faker->imageUrl(100, 100),
+        'views' => $faker->numberBetween(1, 100000)
     ];
 });

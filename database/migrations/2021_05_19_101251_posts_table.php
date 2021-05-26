@@ -20,6 +20,8 @@ class PostsTable extends Migration
             $table->text('body');
             $table->text('img295_250');
             $table->text('img780_520');
+            $table->text('img100_100');
+            $table->unsignedInteger('views');
             $table->timestamps();
         });
 
