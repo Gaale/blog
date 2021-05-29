@@ -59,64 +59,169 @@
 
                 <div class="col-xl-3 col-lg-8 col-md-8 col-sm-9 col-12">
                     <div class="header-search text-right d-flex align-items-center">
-                        <form class="header-search-form">
-                            <div class="axil-search form-group">
-                                <button type="submit" class="search-button"><i class="fal fa-search"></i></button>
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                        </form>
-                        <ul class="metabar-block">
-                            <li><a href="#"><img src="/assets/images/others/author.png" alt="Author Images"></a></li>
-                        </ul>
-                        <!-- Start Hamburger Menu  -->
-                        <div class="hamburger-menu d-block d-xl-none">
-                            <div class="hamburger-inner">
-                                <div class="icon"><i class="fal fa-bars"></i></div>
-                            </div>
+                        <div class="col-xl-3 col-lg-8 col-md-8 col-sm-9 col-12">
+                            <nav class="navbar navbar-expand-md navbar-light bg-white">
+                                <div class="container">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                            aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                                        <div class="col-xl-3 col-lg-8 col-md-8 col-sm-9 col-12">
+                                            <nav class="navbar navbar-expand-md navbar-light bg-white">
+                                                <div class="container">
+                                                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                                            data-target="#navbarSupportedContent"
+                                                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                                                            aria-label="{{ __('Toggle navigation') }}">
+                                                        <span class="navbar-toggler-icon"></span>
+                                                    </button>
+
+                                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                                        <!-- Left Side Of Navbar -->
+                                                        <ul class="navbar-nav mr-auto">
+
+                                                        </ul>
+
+                                                        <!-- Right Side Of Navbar -->
+                                                        <ul class="navbar-nav ml-auto">
+                                                            <!-- Authentication Links -->
+                                                            @guest
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link"
+                                                                       href="{{ route('login') }}">{{ __('Login') }}</a>
+                                                                </li>
+                                                                @if (Route::has('register'))
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link"
+                                                                           href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                                    </li>
+                                                                @endif
+                                                            @else
+                                                                <li class="nav-item dropdown">
+                                                                    <a id="navbarDropdown"
+                                                                       class="nav-link dropdown-toggle" href="#"
+                                                                       role="button" data-toggle="dropdown"
+                                                                       aria-haspopup="true" aria-expanded="false" v-pre>
+                                                                        {{ Auth::user()->name }}
+                                                                    </a>
+
+                                                                    <div class="dropdown-menu dropdown-menu-right"
+                                                                         aria-labelledby="navbarDropdown">
+                                                                        <a class="dropdown-item"
+                                                                           href="{{ route('logout') }}"
+                                                                           onclick="event.preventDefault();
+                                                                                 document.getElementById('logout-form').submit();">
+                                                                            {{ __('Logout') }}
+                                                                        </a>
+
+                                                                        <form id="logout-form"
+                                                                              action="{{ route('logout') }}"
+                                                                              method="POST" class="d-none">
+                                                                            @csrf
+                                                                        </form>
+                                                                    </div>
+                                                                </li>
+                                                            @endguest
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </nav>
+                                        </div>
+                                </div>
                         </div>
-                        <!-- End Hamburger Menu  -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Start Header -->
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
 
-    <!-- Start Mobile Menu Area  -->
-    <div class="popup-mobilemenu-area">
-        <div class="inner">
-            <div class="mobile-menu-top">
-                <div class="logo">
-                    <a href="/">
-                        <img class="dark-logo" src="/assets/images/logo/logo-black.png" alt="Logo Images">
-                    </a>
-                </div>
-                <div class="mobile-close">
-                    <div class="icon">
-                        <i class="fal fa-times"></i>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                        <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Authentication Links -->
+                                @guest
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                                                 document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                  class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                            </ul>
+                        </div>
                     </div>
+                    </nav>
                 </div>
             </div>
-            <ul class="mainmenu">
-                <li><a href="{{route('main')}}">Main</a></li>
-                <li><a href="{{route('about')}}">About Us</a></li>
-                <li><a href="{{route('services')}}">Services</a></li>
-                <li><a href="{{route('contacts')}}">Contacts</a></li>
-            </ul>
         </div>
+        <!-- Start Hamburger Menu  -->
+        <div class="hamburger-menu d-block d-xl-none">
+            <div class="hamburger-inner">
+                <div class="icon"><i class="fal fa-bars"></i></div>
+            </div>
+        </div>
+        <!-- End Hamburger Menu  -->
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Start Header -->
+
+<!-- Start Mobile Menu Area  -->
+<div class="popup-mobilemenu-area">
+    <div class="inner">
+        <div class="mobile-menu-top">
+            <div class="logo">
+                <a href="/">
+                    <img class="dark-logo" src="/assets/images/logo/logo-black.png" alt="Logo Images">
+                </a>
+            </div>
+            <div class="mobile-close">
+                <div class="icon">
+                    <i class="fal fa-times"></i>
+                </div>
+            </div>
+        </div>
+        <ul class="mainmenu">
+            <li><a href="{{route('main')}}">Main</a></li>
+            <li><a href="{{route('about')}}">About Us</a></li>
+            <li><a href="{{route('services')}}">Services</a></li>
+            <li><a href="{{route('contacts')}}">Contacts</a></li>
+        </ul>
     </div>
-    <!-- End Mobile Menu Area  -->
+</div>
+<!-- End Mobile Menu Area  -->
 
-    @yield('content_1')
-    <div class="col-lg-4 col-xl-4 mt_md--40 mt_sm--40">
-        <!-- Start Sidebar Area  -->
-        <div class="sidebar-inner">
+@yield('content_1')
+<div class="col-lg-4 col-xl-4 mt_md--40 mt_sm--40">
+    <!-- Start Sidebar Area  -->
+    <div class="sidebar-inner">
 
-            <!-- Start Single Widget  -->
-            <div class="axil-single-widget widget widget_categories mb--30">
-                <ul>
-                    @inject('categories', "\App\Category")
-                    @foreach($categories->show_categories() as $category)
+        <!-- Start Single Widget  -->
+        <div class="axil-single-widget widget widget_categories mb--30">
+            <ul>
+                @inject('categories', "\App\Category")
+                @foreach($categories->show_categories() as $category)
                     <li class="cat-item">
                         <a href="{{route('post_by_category', $category->key)}}" class="inner">
                             <div class="thumbnail">
@@ -127,32 +232,32 @@
                             </div>
                         </a>
                     </li>
-                    @endforeach
-                </ul>
-            </div>
-            <!-- End Single Widget  -->
+                @endforeach
+            </ul>
+        </div>
+        <!-- End Single Widget  -->
 
-            <!-- Start Single Widget  -->
-            <div class="axil-single-widget widget widget_search mb--30">
-                <h5 class="widget-title">Search</h5>
-                <form action="#">
-                    <div class="axil-search form-group">
-                        <button type="submit" class="search-button"><i class="fal fa-search"></i></button>
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                </form>
-            </div>
-            <!-- End Single Widget  -->
+        <!-- Start Single Widget  -->
+        <div class="axil-single-widget widget widget_search mb--30">
+            <h5 class="widget-title">Search</h5>
+            <form action="#">
+                <div class="axil-search form-group">
+                    <button type="submit" class="search-button"><i class="fal fa-search"></i></button>
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </form>
+        </div>
+        <!-- End Single Widget  -->
 
-            <!-- Start Single Widget  -->
-            <div class="axil-single-widget widget widget_postlist mb--30">
-                <h5 class="widget-title">Popular on Blogar</h5>
-                <!-- Start Post List  -->
-                <div class="post-medium-block">
+        <!-- Start Single Widget  -->
+        <div class="axil-single-widget widget widget_postlist mb--30">
+            <h5 class="widget-title">Popular on Blogar</h5>
+            <!-- Start Post List  -->
+            <div class="post-medium-block">
 
-                    <!-- Start Single Post  -->
-                    @inject('posts', "\App\Post")
-                    @foreach($posts->show_popular_posts() as $post)
+                <!-- Start Single Post  -->
+                @inject('posts', "\App\Post")
+                @foreach($posts->show_popular_posts() as $post)
                     <div class="content-block post-medium mb--20">
                         <div class="post-thumbnail">
                             <a href="{{route('single_post', $post->id)}}">
@@ -169,71 +274,71 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                    <!-- End Single Post  -->
-
-                </div>
-                <!-- End Post List  -->
+            @endforeach
+            <!-- End Single Post  -->
 
             </div>
-            <!-- End Single Widget  -->
+            <!-- End Post List  -->
 
-            <!-- Start Single Widget  -->
-            @inject('socials', "\App\SocialNetwork")
-            <div class="axil-single-widget widget widget_social mb--30">
-                <h5 class="widget-title">Stay In Touch</h5>
-                <!-- Start Post List  -->
-                <ul class="social-icon md-size justify-content-center">
-                    @foreach($socials->show_social_networks() as $social)
-                    <li><a href="{{$social->contact}}"><i class="{{$social->icon}}"></i></a></li>
-                    @endforeach
-                </ul>
-                <!-- End Post List  -->
-            </div>
-            <!-- End Single Widget  -->
-
-            <!-- Start Single Widget  -->
-            <div class="axil-single-widget widget widget_instagram mb--30">
-                <h5 class="widget-title">Instagram</h5>
-                <!-- Start Post List  -->
-                <ul class="instagram-post-list-wrapper">
-                    <li class="instagram-post-list">
-                        <a href="#">
-                            <img src="/assets/images/small-images/instagram-01.jpg" alt="Instagram Images">
-                        </a>
-                    </li>
-                    <li class="instagram-post-list">
-                        <a href="#">
-                            <img src="/assets/images/small-images/instagram-02.jpg" alt="Instagram Images">
-                        </a>
-                    </li>
-                    <li class="instagram-post-list">
-                        <a href="#">
-                            <img src="/assets/images/small-images/instagram-03.jpg" alt="Instagram Images">
-                        </a>
-                    </li>
-                    <li class="instagram-post-list">
-                        <a href="#">
-                            <img src="/assets/images/small-images/instagram-04.jpg" alt="Instagram Images">
-                        </a>
-                    </li>
-                    <li class="instagram-post-list">
-                        <a href="#">
-                            <img src="/assets/images/small-images/instagram-05.jpg" alt="Instagram Images">
-                        </a>
-                    </li>
-                    <li class="instagram-post-list">
-                        <a href="#">
-                            <img src="/assets/images/small-images/instagram-06.jpg" alt="Instagram Images">
-                        </a>
-                    </li>
-                </ul>
-                <!-- End Post List  -->
-            </div>
-            <!-- End Single Widget  -->
         </div>
-        <!-- End Sidebar Area  -->
+        <!-- End Single Widget  -->
+
+        <!-- Start Single Widget  -->
+        @inject('socials', "\App\SocialNetwork")
+        <div class="axil-single-widget widget widget_social mb--30">
+            <h5 class="widget-title">Stay In Touch</h5>
+            <!-- Start Post List  -->
+            <ul class="social-icon md-size justify-content-center">
+                @foreach($socials->show_social_networks() as $social)
+                    <li><a href="{{$social->contact}}"><i class="{{$social->icon}}"></i></a></li>
+                @endforeach
+            </ul>
+            <!-- End Post List  -->
+        </div>
+        <!-- End Single Widget  -->
+
+        <!-- Start Single Widget  -->
+        <div class="axil-single-widget widget widget_instagram mb--30">
+            <h5 class="widget-title">Instagram</h5>
+            <!-- Start Post List  -->
+            <ul class="instagram-post-list-wrapper">
+                <li class="instagram-post-list">
+                    <a href="#">
+                        <img src="/assets/images/small-images/instagram-01.jpg" alt="Instagram Images">
+                    </a>
+                </li>
+                <li class="instagram-post-list">
+                    <a href="#">
+                        <img src="/assets/images/small-images/instagram-02.jpg" alt="Instagram Images">
+                    </a>
+                </li>
+                <li class="instagram-post-list">
+                    <a href="#">
+                        <img src="/assets/images/small-images/instagram-03.jpg" alt="Instagram Images">
+                    </a>
+                </li>
+                <li class="instagram-post-list">
+                    <a href="#">
+                        <img src="/assets/images/small-images/instagram-04.jpg" alt="Instagram Images">
+                    </a>
+                </li>
+                <li class="instagram-post-list">
+                    <a href="#">
+                        <img src="/assets/images/small-images/instagram-05.jpg" alt="Instagram Images">
+                    </a>
+                </li>
+                <li class="instagram-post-list">
+                    <a href="#">
+                        <img src="/assets/images/small-images/instagram-06.jpg" alt="Instagram Images">
+                    </a>
+                </li>
+            </ul>
+            <!-- End Post List  -->
+        </div>
+        <!-- End Single Widget  -->
     </div>
+    <!-- End Sidebar Area  -->
+</div>
 </div>
 </div>
 </div>
@@ -298,84 +403,6 @@
 
 <!-- Start Footer Area  -->
 <div class="axil-footer-area axil-footer-style-1 footer-variation-2">
-    <div class="footer-mainmenu">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget">
-                        <h2 class="title">World</h2>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">U.N.</a></li>
-                                <li><a href="#">Conflicts</a></li>
-                                <li><a href="#">Terrorism</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget">
-                        <h2 class="title">Politics</h2>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">Executive</a></li>
-                                <li><a href="#">Senate</a></li>
-                                <li><a href="#">House</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget">
-                        <h2 class="title">Entertainment</h2>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">Celebrity News</a></li>
-                                <li><a href="#">Movies</a></li>
-                                <li><a href="#">TV News</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget">
-                        <h2 class="title">Business</h2>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">Environment</a></li>
-                                <li><a href="#">Conflicts</a></li>
-                                <li><a href="#">Terrorism</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget">
-                        <h2 class="title">Health</h2>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">Movies</a></li>
-                                <li><a href="#">Conflicts</a></li>
-                                <li><a href="#">Terrorism</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget">
-                        <h2 class="title">About</h2>
-                        <div class="inner">
-                            <ul class="ft-menu-list">
-                                <li><a href="#">U.N.</a></li>
-                                <li><a href="#">Conflicts</a></li>
-                                <li><a href="#">Terrorism</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Start Footer Top Area  -->
     <div class="footer-top">

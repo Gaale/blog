@@ -25,6 +25,13 @@ Route::get('/author/{key}', PostByAuthorController::class)->name('post_by_author
 
 Route::get('/post/{id}', SinglePostController::class)->name('single_post');
 
+Route::post('/post/{id}', SaveCommentController::class)->name('save_comment');
+
 Route::get('/category/{key}', PostByCategoryController::class)->name('post_by_category');
 
+
+//auth
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 

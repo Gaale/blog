@@ -10,7 +10,7 @@ class MainController extends Controller
 {
     public function __invoke()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'DESC')->paginate(5);
 
         $categories = Category::all();
 
