@@ -549,7 +549,7 @@
                         <div class="content-block post-list-view axil-control is-active mt--30">
                             <div class="post-thumbnail">
                                 <a href="{{route('single_post', $post->id)}}">
-                                    <img src="{{$post->img295_250}}" alt="Post Images">
+                                    <img src="{{$post->img295_250}}">
                                 </a>
                             </div>
                             <div class="post-content">

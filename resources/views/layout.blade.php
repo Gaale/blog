@@ -8,6 +8,15 @@
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {{--    Tiny--}}
+    <script src="https://cdn.tiny.cloud/1/zb1bhk98vu7xgadbzpl7rfy8ns4xpnf70ng7ia7vm5ns91l1/tinymce/5/tinymce.min.js"
+            referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea.form-control-lg',
+            height: 500
+        });
+    </script>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.png">
 
@@ -51,6 +60,9 @@
                                 <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('services')}}">Our Services</a></li>
                                 <li><a href="{{route('contacts')}}">Contacts</a></li>
+                                @if(\Illuminate\Support\Facades\Auth::check())
+                                <li><a href="{{route('admin')}}">Admin Panel</a></li>
+                                @endif
                             </ul>
                             <!-- End Mainmanu Nav -->
                         </nav>
@@ -126,61 +138,65 @@
                                                 </div>
                                             </nav>
                                         </div>
+                                    {{--                                </div>--}}
+                                </div>
+                                <span class="navbar-toggler-icon"></span>
+                                {{--                        </button>--}}
+
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                                    <!-- Right Side Of Navbar -->
+                                    <ul class="navbar-nav ml-auto">
+                                        <!-- Authentication Links -->
+                                        @guest
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            </li>
+                                            @if (Route::has('register'))
+                                                <li class="nav-item">
+                                                    <a class="nav-link"
+                                                       href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                </li>
+                                            @endif
+                                        @else
+                                            <li class="nav-item dropdown">
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                                   role="button"
+                                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                   v-pre>
+                                                    {{ Auth::user()->name }}
+                                                </a>
+
+                                                <div class="dropdown-menu dropdown-menu-right"
+                                                     aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                       onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a>
+
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                          class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        @endguest
+                                    </ul>
                                 </div>
                         </div>
-                        <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                        <!-- Right Side Of Navbar -->
-                            <ul class="navbar-nav ml-auto">
-                                <!-- Authentication Links -->
-                                @guest
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                    </li>
-                                    @if (Route::has('register'))
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                        </li>
-                                    @endif
-                                @else
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
-                                        </a>
-
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                                                 document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                  class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </li>
-                                @endguest
-                            </ul>
-                        </div>
+                        </nav>
                     </div>
-                    </nav>
                 </div>
             </div>
-        </div>
-        <!-- Start Hamburger Menu  -->
-        <div class="hamburger-menu d-block d-xl-none">
-            <div class="hamburger-inner">
-                <div class="icon"><i class="fal fa-bars"></i></div>
+            <!-- Start Hamburger Menu  -->
+            <div class="hamburger-menu d-block d-xl-none">
+                <div class="hamburger-inner">
+                    <div class="icon"><i class="fal fa-bars"></i></div>
+                </div>
             </div>
+            <!-- End Hamburger Menu  -->
         </div>
-        <!-- End Hamburger Menu  -->
-</div>
 </div>
 </div>
 </div>

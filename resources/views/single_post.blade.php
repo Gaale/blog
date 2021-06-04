@@ -58,6 +58,7 @@
                                                     <li><a href="{{$post->author->twitter_link}}"><i class="fab fa-twitter"></i></a></li>
                                                     <li><a href="{{$post->author->email_link}}"><i class="far fa-envelope"></i></a></li>
                                                 </ul>
+                                                <img src="{{$post->img780_520}}" class="mt--30">
                                             </div>
                                         </div>
                                         <!-- End Post Content  -->
@@ -70,9 +71,10 @@
                     <!-- End Banner Area -->
 
                     <div class="axil-post-details">
-                        <p class="has-medium-font-size">{{$post->body}}</p>
 
-                        <div class="tagcloud">
+                        <div class="has-medium-font-size">{!! $post->body !!}</div>
+
+                        <div class="tagcloud mt--30">
                             @foreach($post->category as $cat)
                             <a href="{{route('post_by_category', $cat->key)}}">{{$cat->title}}</a>
                             @endforeach
@@ -196,7 +198,7 @@
                                                         <div class="time-spent">{{date('F j, Y', strtotime($comment->created_at))}}</div>
                                                     </div>
                                                     <div class="comment-text">
-                                                        <p class="b2">{{$comment->message}}</p>
+                                                        <p class="b2">{{ $comment->message }}</p>
                                                     </div>
                                                 </div>
                                             </div>
