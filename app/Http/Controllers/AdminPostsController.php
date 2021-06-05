@@ -70,8 +70,6 @@ class AdminPostsController extends Controller
                 $post->category()->sync($request->input('category_id'), false);
                 $post->category()->getRelated();
 
-                $request->session()->flash('created');
-
                 return redirect()->route('admin')->with('message','Post successfully created');
             } else {
                 return redirect()->route('404');
