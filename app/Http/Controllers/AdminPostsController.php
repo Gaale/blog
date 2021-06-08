@@ -8,6 +8,8 @@ use App\Category;
 use Illuminate\Http\Request;
 use Auth;
 use Validator;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class AdminPostsController extends Controller
 {
@@ -69,6 +71,10 @@ class AdminPostsController extends Controller
 
                 $post->category()->sync($request->input('category_id'), false);
                 $post->category()->getRelated();
+
+                $log = new Logger('added_post');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/logs.log', Logger::INFO));
+                $log->info('User ' . Auth::user()->name . ' have added new post # ' . $post->id);
 
                 return redirect()->route('admin')->with('message','Post successfully created');
             } else {
@@ -135,6 +141,9 @@ class AdminPostsController extends Controller
                 }
                 $post->save();
 
+                $log = new Logger('updated_post');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/logs.log', Logger::INFO));
+                $log->info('User ' . Auth::user()->name . ' have updated post # ' . $post->id);
 
                 return redirect()->route('admin')->with('message','Post successfully updated');
             } else {
@@ -150,6 +159,10 @@ class AdminPostsController extends Controller
         if ($request->method() == 'DELETE') {
             $post = Post::find($request->input('id'));
             $post->delete();
+
+            $log = new Logger('deleted_post');
+            $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/logs.log', Logger::WARNING));
+            $log->warning('User ' . Auth::user()->name . ' have deleted post # ' . $post->id);
 
             return back()->with('message','Post successfully deleted');
 
