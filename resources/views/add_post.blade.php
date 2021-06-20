@@ -9,7 +9,7 @@
     <div class="post-single-wrapper axil-section-gap bg-color-white justify-content-md-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 mr--80 ml--80">
+                <div class="col-lg-10 mr--80 ml--80">
 
                     @if (\Illuminate\Support\Facades\Auth::check())
                         <h1>Add new post</h1>

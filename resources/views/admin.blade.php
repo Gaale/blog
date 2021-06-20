@@ -13,7 +13,7 @@
     <div class="post-single-wrapper axil-section-gap bg-color-white justify-content-md-center">
     <div class="container">
         <div class="row ">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 @if(\Illuminate\Support\Facades\Auth::check())
                     <h1 class="title">Admin Panel</h1>
                     <div class="col-lg-12">
@@ -84,5 +84,4 @@
                     <!-- End Pagination List  -->
                 @endif
             </div>
-
 @endsection

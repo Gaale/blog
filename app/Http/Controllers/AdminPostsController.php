@@ -69,7 +69,7 @@ class AdminPostsController extends Controller
                 }
                 $post->save();
 
-                $post->category()->sync($request->input('category_id'), false);
+                $post->category()->attach($request->input('category_id'));
                 $post->category()->getRelated();
 
                 $log = new Logger('added_post');
@@ -92,8 +92,13 @@ class AdminPostsController extends Controller
         if (\Auth::check()) {
             $post = Post::where('id', '=', $id)->first();
             $authors = Author::all();
+            $categories = Category::all();
 
-            return view('edit_post', ['post' => $post, 'authors' => $authors]);
+            return view('edit_post', [
+                'post' => $post,
+                'authors' => $authors,
+                'categories' => $categories
+                ]);
 
         } else {
             return redirect('login');
@@ -140,6 +145,10 @@ class AdminPostsController extends Controller
                     $post->img100_100 = $pathToImage . $imageName100_100;
                 }
                 $post->save();
+
+                $post->category()->getRelated();
+                $post->category()->sync($request->input('category_id'));
+                $post->category()->getRelated();
 
                 $log = new Logger('updated_post');
                 $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/logs.log', Logger::INFO));

@@ -97,3 +97,7 @@
                 </div>
 
 @endsection
+
+@section('side_bar')
+    @include('side_bar')
+@endsection

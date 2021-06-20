@@ -61,7 +61,7 @@
                                 <li><a href="{{route('services')}}">Our Services</a></li>
                                 <li><a href="{{route('contacts')}}">Contacts</a></li>
                                 @if(\Illuminate\Support\Facades\Auth::check())
-                                <li><a href="{{route('admin')}}">Admin Panel</a></li>
+                                    <li><a href="{{route('admin')}}">Admin Panel</a></li>
                                 @endif
                             </ul>
                             <!-- End Mainmanu Nav -->
@@ -138,10 +138,9 @@
                                                 </div>
                                             </nav>
                                         </div>
-                                    {{--                                </div>--}}
+                                    </button>
                                 </div>
                                 <span class="navbar-toggler-icon"></span>
-                                {{--                        </button>--}}
 
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -184,178 +183,52 @@
                                         @endguest
                                     </ul>
                                 </div>
+                            </nav>
                         </div>
-                        </nav>
+                    </div>
+                </div>
+                <!-- Start Hamburger Menu  -->
+                <div class="hamburger-menu d-block d-xl-none">
+                    <div class="hamburger-inner">
+                        <div class="icon"><i class="fal fa-bars"></i></div>
+                    </div>
+                </div>
+                <!-- End Hamburger Menu  -->
+            </div>
+        </div>
+    </header>
+    <!-- Start Header -->
+
+    <!-- Start Mobile Menu Area  -->
+    <div class="popup-mobilemenu-area">
+        <div class="inner">
+            <div class="mobile-menu-top">
+                <div class="logo">
+                    <a href="/">
+                        <img class="dark-logo" src="/assets/images/logo/logo-black.png" alt="Logo Images">
+                    </a>
+                </div>
+                <div class="mobile-close">
+                    <div class="icon">
+                        <i class="fal fa-times"></i>
                     </div>
                 </div>
             </div>
-            <!-- Start Hamburger Menu  -->
-            <div class="hamburger-menu d-block d-xl-none">
-                <div class="hamburger-inner">
-                    <div class="icon"><i class="fal fa-bars"></i></div>
-                </div>
-            </div>
-            <!-- End Hamburger Menu  -->
+            <ul class="mainmenu">
+                <li><a href="{{route('main')}}">Main</a></li>
+                <li><a href="{{route('about')}}">About Us</a></li>
+                <li><a href="{{route('services')}}">Services</a></li>
+                <li><a href="{{route('contacts')}}">Contacts</a></li>
+            </ul>
         </div>
-</div>
-</div>
-</div>
-</header>
-<!-- Start Header -->
-
-<!-- Start Mobile Menu Area  -->
-<div class="popup-mobilemenu-area">
-    <div class="inner">
-        <div class="mobile-menu-top">
-            <div class="logo">
-                <a href="/">
-                    <img class="dark-logo" src="/assets/images/logo/logo-black.png" alt="Logo Images">
-                </a>
-            </div>
-            <div class="mobile-close">
-                <div class="icon">
-                    <i class="fal fa-times"></i>
-                </div>
-            </div>
-        </div>
-        <ul class="mainmenu">
-            <li><a href="{{route('main')}}">Main</a></li>
-            <li><a href="{{route('about')}}">About Us</a></li>
-            <li><a href="{{route('services')}}">Services</a></li>
-            <li><a href="{{route('contacts')}}">Contacts</a></li>
-        </ul>
     </div>
+    <!-- End Mobile Menu Area  -->
+    @inject('socials', "\App\SocialNetwork")
+
+    @yield('content_1')
+    @yield('side_bar')
 </div>
-<!-- End Mobile Menu Area  -->
-
-@yield('content_1')
-<div class="col-lg-4 col-xl-4 mt_md--40 mt_sm--40">
-    <!-- Start Sidebar Area  -->
-    <div class="sidebar-inner">
-
-        <!-- Start Single Widget  -->
-        <div class="axil-single-widget widget widget_categories mb--30">
-            <ul>
-                @inject('categories', "\App\Category")
-                @foreach($categories->show_categories() as $category)
-                    <li class="cat-item">
-                        <a href="{{route('post_by_category', $category->key)}}" class="inner">
-                            <div class="thumbnail">
-                                <img src="{{$category->icon}}" alt="">
-                            </div>
-                            <div class="content">
-                                <h5 class="title">{{$category->title}}</h5>
-                            </div>
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-        <!-- End Single Widget  -->
-
-        <!-- Start Single Widget  -->
-        <div class="axil-single-widget widget widget_search mb--30">
-            <h5 class="widget-title">Search</h5>
-            <form action="#">
-                <div class="axil-search form-group">
-                    <button type="submit" class="search-button"><i class="fal fa-search"></i></button>
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-            </form>
-        </div>
-        <!-- End Single Widget  -->
-
-        <!-- Start Single Widget  -->
-        <div class="axil-single-widget widget widget_postlist mb--30">
-            <h5 class="widget-title">Popular on Blogar</h5>
-            <!-- Start Post List  -->
-            <div class="post-medium-block">
-
-                <!-- Start Single Post  -->
-                @inject('posts', "\App\Post")
-                @foreach($posts->show_popular_posts() as $post)
-                    <div class="content-block post-medium mb--20">
-                        <div class="post-thumbnail">
-                            <a href="{{route('single_post', $post->id)}}">
-                                <img src="{{$post->img100_100}}" alt="Post Images">
-                            </a>
-                        </div>
-                        <div class="post-content">
-                            <h6 class="title"><a href="{{route('single_post', $post->id)}}">{{$post->title}}</a></h6>
-                            <div class="post-meta">
-                                <ul class="post-meta-list">
-                                    <li>{{date('F j, Y', strtotime($post->updated_at))}}</li>
-                                    <li>{{$post->views}} Views</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-            @endforeach
-            <!-- End Single Post  -->
-
-            </div>
-            <!-- End Post List  -->
-
-        </div>
-        <!-- End Single Widget  -->
-
-        <!-- Start Single Widget  -->
-        @inject('socials', "\App\SocialNetwork")
-        <div class="axil-single-widget widget widget_social mb--30">
-            <h5 class="widget-title">Stay In Touch</h5>
-            <!-- Start Post List  -->
-            <ul class="social-icon md-size justify-content-center">
-                @foreach($socials->show_social_networks() as $social)
-                    <li><a href="{{$social->contact}}"><i class="{{$social->icon}}"></i></a></li>
-                @endforeach
-            </ul>
-            <!-- End Post List  -->
-        </div>
-        <!-- End Single Widget  -->
-
-        <!-- Start Single Widget  -->
-        <div class="axil-single-widget widget widget_instagram mb--30">
-            <h5 class="widget-title">Instagram</h5>
-            <!-- Start Post List  -->
-            <ul class="instagram-post-list-wrapper">
-                <li class="instagram-post-list">
-                    <a href="#">
-                        <img src="/assets/images/small-images/instagram-01.jpg" alt="Instagram Images">
-                    </a>
-                </li>
-                <li class="instagram-post-list">
-                    <a href="#">
-                        <img src="/assets/images/small-images/instagram-02.jpg" alt="Instagram Images">
-                    </a>
-                </li>
-                <li class="instagram-post-list">
-                    <a href="#">
-                        <img src="/assets/images/small-images/instagram-03.jpg" alt="Instagram Images">
-                    </a>
-                </li>
-                <li class="instagram-post-list">
-                    <a href="#">
-                        <img src="/assets/images/small-images/instagram-04.jpg" alt="Instagram Images">
-                    </a>
-                </li>
-                <li class="instagram-post-list">
-                    <a href="#">
-                        <img src="/assets/images/small-images/instagram-05.jpg" alt="Instagram Images">
-                    </a>
-                </li>
-                <li class="instagram-post-list">
-                    <a href="#">
-                        <img src="/assets/images/small-images/instagram-06.jpg" alt="Instagram Images">
-                    </a>
-                </li>
-            </ul>
-            <!-- End Post List  -->
-        </div>
-        <!-- End Single Widget  -->
-    </div>
-    <!-- End Sidebar Area  -->
-</div>
-</div>
+{{--</div>--}}
 </div>
 </div>
 </div>

@@ -8,7 +8,7 @@
     <div class="post-single-wrapper axil-section-gap bg-color-white justify-content-md-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 mr--80 ml--80">
+                <div class="col-lg-10 mr--80 ml--80">
 
                     @if (\Illuminate\Support\Facades\Auth::check())
                         <h1>Edit post # {{$post->id}}</h1>
@@ -30,6 +30,18 @@
                                     @foreach($authors as $author)
                                         <option value="{{$author->id}}" @if($author->id == $post->author_id) selected @endif
                                                 id="exampleFormControlSelect1">{{$author->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect2">Choose Category (press Ctrl for choosing several
+                                    categories)</label>
+                                <select multiple class="form-control form-control-lg" id="exampleFormControlSelect2"  name="category_id[]">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}"
+                                                @if ($post->category->contains($category)) selected @endif
+                                                id="exampleFormControlSelect2">{{$category->title}}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>

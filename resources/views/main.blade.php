@@ -38,443 +38,38 @@
                                     class="modern-post-activation slick-layout-wrapper axil-slick-arrow arrow-between-side">
 
                                     <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="ACCESSIBILITY">ACCESSIBILITY</span>
-                                                                </span>
-                                                        </a>
+                                    @foreach($posts->take(10) as $post)
+                                        <div class="slick-single-layout">
+                                            <div
+                                                class="content-block modern-post-style text-center content-block-column">
+                                                <div class="post-content">
+                                                    <div class="post-cat">
+                                                        <div class="post-cat-list">
+                                                            @foreach($post->category->take(1) as $cat)
+                                                                <a class="hover-flip-item-wrapper"
+                                                                   href="{{route('post_by_category', $cat->key)}}">
+                                                                   <span class="hover-flip-item">
+                                                                   <span
+                                                                       data-text="{{$cat->title}}">{{$cat->title}}</span>
+                                                                   </span>
+                                                                </a>
+                                                            @endforeach
+                                                        </div>
                                                     </div>
+                                                    <h4 class="title" style="height: 120px">
+                                                        <a href="{{route('single_post', $post->id)}}">{{$post->title}}</a>
+                                                    </h4>
                                                 </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-04.jpg"
-                                                         alt="Post Images">
-                                                </a>
+                                                <div class="post-thumbnail">
+                                                    <a href="{{route('single_post', $post->id)}}">
+                                                        <img src="{{$post->img780_520}}"
+                                                             alt="Post Images">
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="APPLE DESIGN">APPLE DESIGN</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Bold new experience. Same
-                                                        Mac magic.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-05.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="GADGETS">GADGETS</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Creative Game With The New
-                                                        DJI Mavic Air 2</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-06.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="ACCESSIBILITY">ACCESSIBILITY</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-07.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-                                </div>
-                            </div>
-
-                            <div class="single-tab-content tab-pane fade" id="tabtwo" role="tabpanel"
-                                 aria-labelledby="tab-two">
-                                <div
-                                    class="modern-post-activation slick-layout-wrapper axil-slick-arrow arrow-between-side">
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="APPLE DESIGN">APPLE DESIGN</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Bold new experience. Same
-                                                        Mac magic.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-07.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="CASE STUDY">CASE STUDY</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-06.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="ACCESSIBILITY">ACCESSIBILITY</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-05.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="ACCESSIBILITY">ACCESSIBILITY</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-04.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                </div>
-                            </div>
-
-                            <div class="single-tab-content tab-pane fade" id="tabthree" role="tabpanel"
-                                 aria-labelledby="tab-three">
-                                <div
-                                    class="modern-post-activation slick-layout-wrapper axil-slick-arrow arrow-between-side">
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="ACCESSIBILITY">ACCESSIBILITY</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-04.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="DESIGN">DESIGN</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Bold new experience.
-                                                        Same Mac magic.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-08.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="DESIGN">DESIGN</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-01.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="DESIGN">DESIGN</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-02.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                </div>
-                            </div>
-
-                            <div class="single-tab-content tab-pane fade" id="tabfour" role="tabpanel"
-                                 aria-labelledby="tab-four">
-                                <div
-                                    class="modern-post-activation slick-layout-wrapper axil-slick-arrow arrow-between-side">
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="APPLE DESIGN">APPLE DESIGN</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Bold new experience.
-                                                        Same Mac magic.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-03.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="GADGETS">GADGETS</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Creative Game With The New
-                                                        DJI Mavic Air 2</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-02.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="GADGETS">GADGETS</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-01.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
-
-                                    <!-- Start Single Post  -->
-                                    <div class="slick-single-layout">
-                                        <div class="content-block modern-post-style text-center content-block-column">
-                                            <div class="post-content">
-                                                <div class="post-cat">
-                                                    <div class="post-cat-list">
-                                                        <a class="hover-flip-item-wrapper" href="#">
-                                                                <span class="hover-flip-item">
-                                                                    <span data-text="GADGETS">GADGETS</span>
-                                                                </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title"><a href="post-details.html">Lightweight, grippable,
-                                                        and ready to go.</a></h4>
-                                            </div>
-                                            <div class="post-thumbnail">
-                                                <a href="post-details.html">
-                                                    <img src="/assets/images/post-images/post-column-05.jpg"
-                                                         alt="Post Images">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Post  -->
+                                @endforeach
+                                <!-- End Single Post  -->
                                 </div>
                             </div>
                         </div>
@@ -549,7 +144,7 @@
                         <div class="content-block post-list-view axil-control is-active mt--30">
                             <div class="post-thumbnail">
                                 <a href="{{route('single_post', $post->id)}}">
-                                    <img src="{{$post->img295_250}}">
+                                    <img src="{{$post->img295_250}}" alt="image post">
                                 </a>
                             </div>
                             <div class="post-content">
@@ -631,4 +226,6 @@
 
                 </div>
 @endsection
-
+@section('side_bar')
+    @include('side_bar')
+@endsection

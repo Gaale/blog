@@ -3,75 +3,147 @@
 @section('title', 'CONTACTS')
 
 @section('content_1')
-<!-- Start Banner Area  -->
-<div class="axil-banner banner-style-1 bg_image bg_image--3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="inner">
-                    <h1 class="title">Contact Us</h1>
-                    <p class="description">Wherever &#38; whenever you need us. We are here for you – contact us for all your support needs.<br /> be it technical, general queries or information support.</p>
+    <!-- Start Banner Area  -->
+    <div class="axil-banner banner-style-1 bg_image bg_image--3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner">
+                        <h1 class="title">Contact Us</h1>
+                        <p class="description">Wherever &#38; whenever you need us. We are here for you – contact us for
+                            all your support needs.<br/> be it technical, general queries or information support.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Banner Area  -->
+    <!-- End Banner Area  -->
 
-<!-- Start Post List Wrapper  -->
-<div class="axil-post-list-area axil-section-gap bg-color-white">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-xl-8">
-                <!-- Start About Area  -->
-                <div class="axil-about-us">
-                    <div class="inner">
-                        <h2>Say Hello! </h2>
-                        <p>Donec cursus dolor vitae congue consectetur. Morbi mattis viverra felis. Etiam dapibus id turpis at sagittis. Cras mollis mi vel ante ultricies, id ullamcorper mi pulvinar. Proin bibendum ornare risus, lacinia cursus quam condimentum id. Curabitur auctor massa eget porttitor molestie. Aliquam imperdiet dolor nec metus pulvinar sollicitudin. </p>
-                        <p><strong>Aliquam iaculis at odio ut tempus</strong>. Suspendisse blandit luctus dui, a consequat mauris mollis id. Sed in ante at tortor malesuada imperdiet. Vestibulum sed gravida nibh. Nulla suscipit congue lorem, id tempor ipsum molestie sit amet. Nulla ultricies vitae erat in tincidunt. Maecenas tempus quam et ipsum elementum, a efficitur lectus tincidunt. Praesent diam elit, tincidunt ac tempus vulputate, aliquet viverra mauris. Etiam eu nunc efficitur, sagittis est ut, fringilla neque. Ut interdum eget lorem eget congue. Ut nec arcu placerat, mattis urna vel, consequat diam. Sed in leo in dolor suscipit molestie. </p>
-                        @foreach($contacts as $contact)
-                        <p class="primary-color">{{$contact->type}}: {{$contact->contact}}</p>
-                        @endforeach
+    <!-- Start Post List Wrapper  -->
+    <div class="axil-post-list-area axil-section-gap bg-color-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-xl-8">
+                    <!-- Start About Area  -->
+                    <div class="axil-about-us">
+                        <div class="inner">
+                            <h2>Say Hello! </h2>
+                            <p>Donec cursus dolor vitae congue consectetur. Morbi mattis viverra felis. Etiam dapibus id
+                                turpis at sagittis. Cras mollis mi vel ante ultricies, id ullamcorper mi pulvinar. Proin
+                                bibendum ornare risus, lacinia cursus quam condimentum id. Curabitur auctor massa eget
+                                porttitor molestie. Aliquam imperdiet dolor nec metus pulvinar sollicitudin. </p>
+                            <p><strong>Aliquam iaculis at odio ut tempus</strong>. Suspendisse blandit luctus dui, a
+                                consequat mauris mollis id. Sed in ante at tortor malesuada imperdiet. Vestibulum sed
+                                gravida nibh. Nulla suscipit congue lorem, id tempor ipsum molestie sit amet. Nulla
+                                ultricies vitae erat in tincidunt. Maecenas tempus quam et ipsum elementum, a efficitur
+                                lectus tincidunt. Praesent diam elit, tincidunt ac tempus vulputate, aliquet viverra
+                                mauris. Etiam eu nunc efficitur, sagittis est ut, fringilla neque. Ut interdum eget
+                                lorem eget congue. Ut nec arcu placerat, mattis urna vel, consequat diam. Sed in leo in
+                                dolor suscipit molestie. </p>
+                            @foreach($contacts as $contact)
+                                <p class="primary-color">{{$contact->type}}: {{$contact->contact}}</p>
+                            @endforeach
+                        </div>
+                        <!-- Start Contact Form  -->
+                        <div class="axil-section-gapTop axil-contact-form-area">
+                            <h4 class="title mb--10">Send Us a Message</h4>
+                            <p class="b3 mb--30">Your email address will not be published. All the fields are
+                                required.</p>
+                            <form id="contact-form" method="POST" action="mail.php"
+                                  class="axil-contact-form contact-form--1 row">
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="contact-name">Your Name</label>
+                                        <input name="contact-name" id="contact-name" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="contact-phone">Phone</label>
+                                        <input type="text" name="contact-phone" id="contact-phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label>Your Email</label>
+                                        <input for="contact-email" name="contact-email" id="contact-email" type="email">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="contact-message">Your Message</label>
+                                        <textarea name="contact-message" id="contact-message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-submit">
+                                        <button name="submit" type="submit" id="submit"
+                                                class="axil-button button-rounded btn-primary">Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End Contact Form  -->
                     </div>
-                    <!-- Start Contact Form  -->
-                    <div class="axil-section-gapTop axil-contact-form-area">
-                        <h4 class="title mb--10">Send Us a Message</h4>
-                        <p class="b3 mb--30">Your email address will not be published. All the fields are required.</p>
-                        <form id="contact-form" method="POST" action="mail.php" class="axil-contact-form contact-form--1 row">
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <div class="form-group">
-                                    <label for="contact-name">Your Name</label>
-                                    <input name="contact-name" id="contact-name" type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <div class="form-group">
-                                    <label for="contact-phone">Phone</label>
-                                    <input type="text" name="contact-phone" id="contact-phone">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <div class="form-group">
-                                    <label>Your Email</label>
-                                    <input for="contact-email" name="contact-email" id="contact-email" type="email">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="contact-message">Your Message</label>
-                                    <textarea name="contact-message" id="contact-message"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-submit">
-                                    <button name="submit" type="submit" id="submit" class="axil-button button-rounded btn-primary">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- End Contact Form  -->
+                    <!-- End About Area  -->
                 </div>
-                <!-- End About Area  -->
-            </div>
-@endsection
+                @endsection
 
+                @section('side_bar')
+                    <div class="col-lg-4 col-xl-4 mt_md--40 mt_sm--40">
+                    @inject('socials', "\App\SocialNetwork")
+                    <!-- Start Single Widget  -->
+                        <div class="axil-single-widget widget widget_social">
+                            <h5 class="widget-title">Stay In Touch</h5>
+                            <!-- Start Post List  -->
+                            <ul class="social-icon md-size justify-content-center">
+                                @foreach($socials->show_social_networks() as $social)
+                                    <li><a href="{{$social->contact}}"><i class="{{$social->icon}}"></i></a></li>
+                                @endforeach
+                            </ul>
+                            <!-- End Post List  -->
+                        </div>
+                        <!-- End Single Widget  -->
+
+                        <!-- Start Single Widget  -->
+                        <div class="axil-single-widget widget widget_instagram mb--30">
+                            <h5 class="widget-title">Instagram</h5>
+                            <!-- Start Post List  -->
+                            <ul class="instagram-post-list-wrapper">
+                                <li class="instagram-post-list">
+                                    <a href="#">
+                                        <img src="/assets/images/small-images/instagram-01.jpg" alt="Instagram Images">
+                                    </a>
+                                </li>
+                                <li class="instagram-post-list">
+                                    <a href="#">
+                                        <img src="/assets/images/small-images/instagram-02.jpg" alt="Instagram Images">
+                                    </a>
+                                </li>
+                                <li class="instagram-post-list">
+                                    <a href="#">
+                                        <img src="/assets/images/small-images/instagram-03.jpg" alt="Instagram Images">
+                                    </a>
+                                </li>
+                                <li class="instagram-post-list">
+                                    <a href="#">
+                                        <img src="/assets/images/small-images/instagram-04.jpg" alt="Instagram Images">
+                                    </a>
+                                </li>
+                                <li class="instagram-post-list">
+                                    <a href="#">
+                                        <img src="/assets/images/small-images/instagram-05.jpg" alt="Instagram Images">
+                                    </a>
+                                </li>
+                                <li class="instagram-post-list">
+                                    <a href="#">
+                                        <img src="/assets/images/small-images/instagram-06.jpg" alt="Instagram Images">
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- End Post List  -->
+                        </div>
+                    </div>
+                    <!-- End Single Widget  -->
+                @endsection

@@ -22,13 +22,6 @@
 
 @endsection
 
-{{--@section('content_2')--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    </div>--}}
-{{--                    </div>--}}
-{{--                    </div>--}}
-{{--                    </div>--}}
-{{--                    </div>--}}
-{{--@endsection--}}
+@section('side_bar')
+    @include('side_bar')
+@endsection
