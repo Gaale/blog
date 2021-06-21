@@ -86,8 +86,7 @@ class AdminPostsController extends Controller
     }
 
 
-    public
-    function edit($id)
+    public function edit($id)
     {
         if (\Auth::check()) {
             $post = Post::where('id', '=', $id)->first();

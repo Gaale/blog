@@ -3,3 +3,5 @@
 [2021-06-08T07:59:52.847211+00:00] deleted_post.WARNING: User Galina have deleted post # 40 [] []
 [2021-06-10T16:44:19.018350+00:00] updated_post.INFO: User Galina have updated post # 39 [] []
 [2021-06-16T20:46:02.398027+00:00] updated_post.INFO: User Galina have updated post # 49 [] []
+[2021-06-21T20:19:09.489489+00:00] deleted_post.WARNING: User by API have deleted post # 39 [] []
+[2021-06-21T20:20:44.349319+00:00] deleted_post.WARNING: User by API have deleted post # 22 [] []

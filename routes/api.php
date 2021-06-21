@@ -35,12 +35,4 @@ Route::post('/post', 'APIAdminController@create');
 
 Route::put('/post/{id}', 'APIAdminController@update');
 
-Route::delete('/post/{id}', function ($id){
-    try {
-        $post = \App\Post::findOrFail($id);
-    } catch (Exception $exception){
-        return response()->json(['Message' => "Such post haven't been found"], 404);
-    }
-    $post->delete();
-    return response()->json(['Message' => "Post " . $post->id .  " successfully deleted"], 200);
-});
+Route::delete('/post/{id}', 'APIAdminController@delete');
