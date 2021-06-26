@@ -3,6 +3,12 @@
 @section('title', 'MAIN')
 
 @section('content_1')
+    @if(\Session::has('flash'))
+        <div class="alert
+        @if (\Illuminate\Support\Facades\Auth::check())alert-success @else alert-warning @endif">
+            <strong>{{\Session::get('flash')}}</strong>
+        </div>
+    @endif
     <!-- Start Tab Area  -->
     <div class="axil-tab-area axil-section-gap bg-color-white">
         <div class="wrapper">
@@ -160,7 +166,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <h4 class="title"><a href="{{route('single_post', $post->id)}}">{{$post->title}}</a>
+                                <h4 class="title"><a href="{{route('single_post', $post->id)}}">{{$post->title}}"</a>
                                 </h4>
                                 <div class="post-meta-wrapper">
                                     <div class="post-meta">
@@ -180,6 +186,7 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    <a href="{{route('add_to_cart', $post->id)}}"><span class="like-btn"></span></a>
                                     <ul class="social-share-transparent justify-content-end">
                                         <li><a href="{{$post->author->fb_link}}"><i class="fab fa-facebook-f"></i></a>
                                         </li>

@@ -46,6 +46,12 @@ Route::get('/admin', 'AdminPostsController@delete_post')->name('admin');
 
 Route::delete('/admin', 'AdminPostsController@delete_post')->name('post_delete_post');
 
+//cart
+Route::get('/cart/add_to_cart/{id}', 'CartController@add_to_cart')->name('add_to_cart');
+
+Route::get('/cart', 'CartController@show_cart')->name('show_cart');
+
+Route::get('/cart/delete_item/{id}', 'CartController@delete_item')->name('delete_item');
 
 //auth
 Auth::routes();

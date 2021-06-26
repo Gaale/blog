@@ -76,7 +76,7 @@ class AdminPostsController extends Controller
                 $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/logs.log', Logger::INFO));
                 $log->info('User ' . Auth::user()->name . ' have added new post # ' . $post->id);
 
-                return redirect()->route('admin')->with('message','Post successfully created');
+                return redirect()->route('admin')->with('message', 'Post successfully created');
             } else {
                 return redirect()->route('404');
             }
@@ -97,7 +97,7 @@ class AdminPostsController extends Controller
                 'post' => $post,
                 'authors' => $authors,
                 'categories' => $categories
-                ]);
+            ]);
 
         } else {
             return redirect('login');
@@ -153,7 +153,7 @@ class AdminPostsController extends Controller
                 $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/logs.log', Logger::INFO));
                 $log->info('User ' . Auth::user()->name . ' have updated post # ' . $post->id);
 
-                return redirect()->route('admin')->with('message','Post successfully updated');
+                return redirect()->route('admin')->with('message', 'Post successfully updated');
             } else {
                 return redirect()->route('404');
             }
@@ -172,7 +172,7 @@ class AdminPostsController extends Controller
             $log->pushHandler(new StreamHandler(__DIR__ . '/../../Logs/logs.log', Logger::WARNING));
             $log->warning('User ' . Auth::user()->name . ' have deleted post # ' . $post->id);
 
-            return back()->with('message','Post successfully deleted');
+            return back()->with('message', 'Post successfully deleted');
 
         } else {
 

@@ -24,6 +24,7 @@
     ============================================ -->
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/cart.css">
     <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="/assets/css/vendor/slick.css">
@@ -32,8 +33,34 @@
     <link rel="stylesheet" href="/assets/css/plugins/plugins.css">
     <link rel="stylesheet" href="/assets/css/style.css">
 
-</head>
+    <style>
+        .like-btn {
+            display: inline-block;
+            Cursor: pointer;
+            position: relative;
+            top: 5px;
+            left: 73px;
+            background: url({{ asset('images/twitter-heart.png') }});
+            width: 60px;
+            height: 60px;
+            background-size: 2900%;
+            background-repeat: no-repeat;
+        }
+        .is-active {
+            animation-name: animate;
+            animation-duration: .8s;
+            animation-iteration-count: 1;
+            animation-timing-function: steps(28);
+            animation-fill-mode: forwards;
+        }
 
+        @keyframes animate {
+            0%   { background-position: left;  }
+            50%  { background-position: right; }
+            100% { background-position: right; }
+        }
+    </style>
+</head>
 <body>
 <div class="main-wrapper">
     <div class="mouse-cursor cursor-outer"></div>
@@ -62,6 +89,7 @@
                                 <li><a href="{{route('contacts')}}">Contacts</a></li>
                                 @if(\Illuminate\Support\Facades\Auth::check())
                                     <li><a href="{{route('admin')}}">Admin Panel</a></li>
+                                    <li><a href="{{route('show_cart')}}">Cart</a></li>
                                 @endif
                             </ul>
                             <!-- End Mainmanu Nav -->
@@ -354,6 +382,7 @@
 <script src="/assets/js/vendor/tweenmax.min.js"></script>
 <script src="/assets/js/vendor/js.cookie.js"></script>
 <script src="/assets/js/vendor/jquery.style.switcher.js"></script>
+<script src="/assets/js/vendor/cart.js"></script>
 
 
 <!-- Main JS -->
