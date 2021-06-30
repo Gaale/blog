@@ -10,6 +10,8 @@
             <div class="title_cart">
                 Cart
             </div>
+        <form method="post" action="{{route('update_cart')}}">
+            @csrf
         @foreach(Cart::getContent() as $post)
             <!-- Post for sale -->
                 <div class="item_cart">
@@ -26,28 +28,31 @@
                         <span>{{$post->name}}</span>
                         <span></span>
                     </div>
-
+                    <div class="total-price">${{$post->price}}</div>
                     <div class="quantity_cart">
                         <button class="plus-btn" type="button" name="button_plus">
                             <img src="https://designmodo.com/demo/shopping-cart/plus.svg" alt=""/>
                         </button>
-                        <input type="text" name="name" value="{{$post->quantity}}">
+                        <input type="text" name="items [{{$post->id}}]" value="{{$post->quantity}}">
                         <button class="minus-btn" type="button" name="button_plus">
                             <img src="https://designmodo.com/demo/shopping-cart/minus.svg" alt=""/>
                         </button>
                     </div>
-
-                    <div class="total-price">${{$post->price}}</div>
+                    <div class="total-price">${{Cart::get($post->id)->getPriceSum()}}</div>
                 </div>
             @endforeach
+            <div class="item_cart flex justify-content-end">
+                <div class="total-price font-weight-bold">Total: ${{Cart::getTotal()}}</div>
+            </div>
             <div class="col-lg-12 text-right">
                 <button class="axil-button button-rounded w-25" type="submit">Update Order</button>
             </div>
+        </form>
     </div>
     <div class="col-lg-12 text-center">
         <div class="form-submit cerchio">
             <button class="axil-button button-rounded mb--30"
-                    value="Make Order"><a style="color: white" href="#">Make Order</a>
+                    value="Make Order"><a style="color: white" href="{{route('make_order')}}">Create Order</a>
             </button>
         </div>
     </div>

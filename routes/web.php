@@ -53,6 +53,14 @@ Route::get('/cart', 'CartController@show_cart')->name('show_cart');
 
 Route::get('/cart/delete_item/{id}', 'CartController@delete_item')->name('delete_item');
 
+Route::post('/cart/update_cart', 'CartController@update_cart')->name('update_cart');
+
+Route::get('/cart/checkout', 'CartController@make_order')->name('make_order');
+
+Route::post('/cart/checkout', OrderController::class)->name('checkout');
+
+Route::get('/order/{id}', OrderReceivedController::class)->name('order');
+
 //auth
 Auth::routes();
 

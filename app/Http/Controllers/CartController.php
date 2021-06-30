@@ -43,4 +43,23 @@ class CartController extends Controller
 
         return back();
     }
+
+    public function update_cart(Request $request)
+    {
+        foreach ($request->post() ['items_'] as $id => $quantity){
+            \Cart::update($id, [
+                'quantity' => [
+                    'relative' => false,
+                    'value' => $quantity
+                ]
+            ]);
+        }
+
+        return back();
+    }
+
+    public function make_order()
+    {
+        return view('checkout');
+    }
 }
